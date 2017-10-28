@@ -1,0 +1,33 @@
+{
+  "name": "google-maps-geojson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "start": "http-server",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccoloradoc/google-maps-geojson.git"
+  },
+  "author": "Cristian Colorado <cristian@wedevelop.mx>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccoloradoc/google-maps-geojson/issues"
+  },
+  "homepage": "https://github.com/ccoloradoc/google-maps-geojson#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "html-loader": "^0.5.1",
+    "load-google-maps-api": "^1.0.0"
+  }
+}

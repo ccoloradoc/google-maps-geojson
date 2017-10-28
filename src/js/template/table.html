@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Campo<th>
+      <th>Valor<th>
+    </tr>
+  </thead>
+  <tbody>
+    <% _.forIn(features, function(value, key) { %>
+      <tr>
+        <td><%- key %></td>
+        <td><%- value %></td>
+      </tr>
+    <% });%>
+  </tbody>
+</table>
