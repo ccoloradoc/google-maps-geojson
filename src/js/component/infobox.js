@@ -1,5 +1,5 @@
 
-export default function InfoBoxFactory(OverlayView) {
+export default function(opts) {
   /* An InfoBox is like an info window, but it displays
    * under the marker, opens quicker, and has flexible styling.
    * @param {GLatLng} latlng Point to place bar at
@@ -14,7 +14,7 @@ export default function InfoBoxFactory(OverlayView) {
     this.title = opts.title;
     this.content = opts.content;
 
-    this.offsetVertical_ = -165;
+    this.offsetVertical_ = -45;
     this.offsetHorizontal_ = 0;
     this.height_ = 165;
     this.width_ = 266;
@@ -81,24 +81,23 @@ export default function InfoBoxFactory(OverlayView) {
       div.style.height = this.height_ + "px";
       div.className = "infobox";
 
+      var popover = document.createElement("div");
+      popover.style.width = "100%";
+      popover.className = "popover bs-popover-right bs-popover-right-docs";
+
       var contentDiv = document.createElement("div");
       contentDiv.innerHTML = this.content;
-      contentDiv.className = "infobox-content";
-
-      var topDiv = document.createElement("div");
-      topDiv.className = "infobox-header";
+      contentDiv.className = "popover-body";
+      contentDiv.style.overflowX = "hidden";
+      contentDiv.style.overflowY = "scroll";
+      contentDiv.style.maxHeight = "125px";
 
       var title = document.createElement("h4");
       title.innerHTML = this.title;
+      title.className = "popover-header";
 
-      var closeImg = document.createElement("img");
-      closeImg.style.width = "32px";
-      closeImg.style.height = "32px";
-      closeImg.style.cursor = "pointer";
-      closeImg.src = "http://googlemaps.github.io/js-v2-samples/images/closebigger.gif";
-
-      topDiv.appendChild(title);
-      topDiv.appendChild(closeImg);
+      var close = document.createElement("div");
+      close.className = "arrow";
 
       function removeInfoBox(ib) {
         return function() {
@@ -106,11 +105,12 @@ export default function InfoBoxFactory(OverlayView) {
         };
       }
 
-      google.maps.event.addDomListener(closeImg, 'click', removeInfoBox(this));
+      google.maps.event.addDomListener(close, 'click', removeInfoBox(this));
 
-      div.appendChild(topDiv);
-      div.appendChild(contentDiv);
-      // div.style.display = 'flex';
+      popover.appendChild(title);
+      popover.appendChild(close);
+      popover.appendChild(contentDiv);
+      div.appendChild(popover)
       panes.floatPane.appendChild(div);
       this.panMap();
     } else if (div.parentNode != panes.floatPane) {
@@ -190,5 +190,5 @@ export default function InfoBoxFactory(OverlayView) {
     this.boundsChangedListener_ = null;
   };
 
-  return InfoBox;
+  return new InfoBox(opts);
 }
