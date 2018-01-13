@@ -14,10 +14,10 @@ export default function(opts) {
     this.title = opts.title;
     this.content = opts.content;
 
-    this.offsetVertical_ = -45;
+    this.offsetVertical_ = -55;
     this.offsetHorizontal_ = 0;
-    this.height_ = 165;
-    this.width_ = 266;
+    this.height_ = 250; //165;
+    this.width_ = 270; //266;
 
     var me = this;
     this.boundsChangedListener_ =
@@ -89,12 +89,12 @@ export default function(opts) {
       contentDiv.innerHTML = this.content;
       contentDiv.className = "popover-body";
       contentDiv.style.overflowX = "hidden";
-      contentDiv.style.overflowY = "scroll";
-      contentDiv.style.maxHeight = "125px";
+      contentDiv.style.overflowY = "hidden";
+      contentDiv.style.maxHeight = "250px";
 
       var title = document.createElement("h4");
       title.innerHTML = this.title;
-      title.className = "popover-header";
+      title.className = "popover-header text-center";
 
       var close = document.createElement("div");
       close.className = "arrow";
@@ -110,7 +110,7 @@ export default function(opts) {
       popover.appendChild(title);
       popover.appendChild(close);
       popover.appendChild(contentDiv);
-      div.appendChild(popover)
+      div.appendChild(popover);
       panes.floatPane.appendChild(div);
       this.panMap();
     } else if (div.parentNode != panes.floatPane) {

@@ -1,16 +1,10 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Campo<th>
-      <th>Valor<th>
-    </tr>
-  </thead>
-  <tbody>
-    <% _.forIn(features, function(value, key) { %>
-      <tr>
-        <td><%- key %></td>
-        <td><%- value %></td>
-      </tr>
-    <% });%>
-  </tbody>
-</table>
+<div style="text-align: center;">
+  <div class="picture">
+    <div class="main">
+      <img src="http://sitl.diputados.gob.mx/LXIII_leg/<%- deputy.deputy.picture %>"/>
+    </div>
+    <img class="secondary" src="dist/images/<%- deputy.deputy.party %>.png"/>
+  </div>
+  <h6 class="mt-2 mb-3"><%- deputy.deputy.displayName %></h6>
+  <a class="btn btn-sm btn-danger" href="<%- url%>" target="_blank">Ver Mas</a>
+</div>
