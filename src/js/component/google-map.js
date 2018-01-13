@@ -1,10 +1,10 @@
-import _ from 'lodash';
+import template  from 'lodash.template';
 import infoBoxFactory from './infobox';
 
 class GoogleMap {
   constructor(options) {
     this.viewGenerator = options.viewGenerator;
-    this._template = _.template(options.contentTemplate);
+    this._template = template(options.contentTemplate);
     this.layers = [];
     this.map = new google.maps.Map(document.getElementById(options.rootId), {
       zoom: 6,
